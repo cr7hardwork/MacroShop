@@ -3,7 +3,7 @@ import "../App.css";
 
 import { useTranslation } from '../translations/TranslationContext';
 
-export default function FormMacro({ text }) {
+export default function FormMacro({ text ,video}) {
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
     const [mouseInput,setMouseInput] =useState('')
@@ -48,7 +48,9 @@ export default function FormMacro({ text }) {
                 <option>{translate.GHZ_INFORMATION.MacroOption1}</option>
                 <option>{translate.GHZ_INFORMATION.MacroOption2}</option>
             </select><br />
-            <button className="order-button" type="submit">{translate.GHZ_INFORMATION.Order}</button>
+            <p> Видео : {video}</p>
+            <h2>Цена : 1000р</h2>
+            <button className="btn" type="submit">{translate.GHZ_INFORMATION.Order}</button>
         </form>
     );
 }

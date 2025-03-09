@@ -56,8 +56,10 @@ export default function AllMacro(){
                 <option value="">{translate.GHZ_INFORMATION.ChooseMacro}</option>
                 <option>{translate.GHZ_INFORMATION.MacroOption1}</option>
                 <option>{translate.GHZ_INFORMATION.MacroOption2}</option>
+                
             </select><br />
-            <button className="order-button" type="submit">Заказать</button>
+            <h2>Цена : 1000р</h2>
+            <button className="btn" type="submit">Заказать</button>
         </form>
     )
 
