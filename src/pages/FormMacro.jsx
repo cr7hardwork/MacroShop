@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../App.css";
+import axios from 'axios';
 
 import { useTranslation } from '../translations/TranslationContext';
 
@@ -21,9 +22,24 @@ export default function FormMacro({ text ,video}) {
         setMouseInput(e.target.value)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(`Вы выбрали: ${selectedOption}, Чувст. мышки ${mouseInput} Герц: ${inputValue}` );
+
+        const orderData = {
+            selectedOption,
+            mouseInput,
+            inputValue
+        }
+        try{
+            const response = await axios.post('http://localhost:3000/order', orderData) 
+        
+        }
+
+                  
+        catch(error){
+            console.log(error);
+            
+        }
     };
 
     return (

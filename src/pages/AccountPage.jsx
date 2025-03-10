@@ -1,7 +1,28 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
+export default function AccountPage() {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
-export default function AccountPage(){
-    return(
-        <h1>Login page</h1>
-    )
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/user/current", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data); 
+      })
+      .catch((err) => {
+        setError(err);
+      });
+  }, []);
+
+ 
+
+return(
+  <div></div>
+)
 }

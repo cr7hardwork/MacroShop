@@ -22,13 +22,10 @@ export default function LoginPage() {
   const handleSubmit =  async (e) => {
     e.preventDefault();
     const response = await axios.post("http://localhost:3000/auth/signin", { email, password });
-      navigate('/myaccount')
-
-  
-    console.log(response);
-    
+    navigate('/myaccount')
     setEmail('')
     setPassword('')
+    return response
   };
 
   return (
