@@ -125,3 +125,9 @@ body {
   justify-content: left;
   margin-top: 10px;
 }
+
+.warning{
+  font-size: 20px;
+  color: red;
+  
+}

@@ -15,7 +15,9 @@ const translations = {
   MACRO : {
     MacroBloodyInfromation : "Макрос для мышки Bloody",
     MacrosLogitechInformation : "Макрос для мышки Logitech",
-    MacrosX7Information : "Макрос для мышки X7"
+    MacrosX7Information : "Макрос для мышки X7",
+    OnWhichWeaopn : "На какую пушку ",
+    PRICE : "Цена : 1000р"
   },
   GHZ_INFORMATION : {
     HowManyGhz : "Напишите сколько у вас герц",
@@ -25,7 +27,9 @@ const translations = {
     MacroOption2 : "Вверх со скориком",
     Order : "Заказать",
     WhatWeapon : "На какое оружие",
-    SensityOfMouse : "Напишите чувствительность вашей мышки(в игре)"
+    SensityOfMouse : "Напишите чувствительность вашей мышки(в игре)",
+    Video : "Видео",
+    Price : "Цена"
     
   },
   REGISTRATION : {
@@ -43,7 +47,10 @@ const translations = {
     Account : "Аккаунт",
     MacroForAnyWeapon : "Заказать макрос на любую пушку"
 
-  }
+ },
+ BUTTON : {
+  Order : "Заказать"
+ }
 
 
 
