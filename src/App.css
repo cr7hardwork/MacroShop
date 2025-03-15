@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f4f8;
@@ -5,6 +6,9 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  background-image: url('assets/OMM0SDL.jpeg');
+  background-size: cover;
+  
 }
 .form {
     width: 500px;
@@ -131,3 +135,18 @@ body {
   color: red;
   
 }
+
+.container-home {
+  display: flex;
+  justify-content: center;
+}
+
+.container-home p {
+  color: white;
+}
+
+.container-home a {
+  color: red; 
+  text-decoration: none;
+}
+

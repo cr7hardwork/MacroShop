@@ -1,31 +1,39 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import X7Macro from "./pages/X7Macro";
-import BloodyMacro from "./pages/BloodMacro";
-import Logitech from "./pages/Logitech";
-import MyContacts from "./pages/MyContacts";
-import Registration from "./pages/Registration";
-import AllMacro from "./pages/AllMacro";
-import NotFound from "./pages/NotFound";
-import LoginPage from "./pages/LoginPage";
-import AccountPage from "./pages/AccountPage";
+import X7Macro from "./pages/Macross/X7Macro";
+import BloodyMacro from "./pages/Macross/BloodMacro";
+import Logitech from "./pages/Macross/Logitech";
+import AllMacro from "./pages/Macross/AllMacro";
+import Registration from "./pages/AuthPages/Registration";
+import NotFound from "./pages/AuthPages/NotFound";
+import LoginPage from "./pages/AuthPages/LoginPage";
+import AccountPage from "./pages/Account/AccountPage";
+import HomePage from "./pages/HomePage";
+import MyContacts from "./pages/Contact/MyContacts";
+import WaitingOrder from "./pages/WaitingOrder/WaitingOrder";
 
 export default function App() {
   return (
     <>
 
       <Navbar />
+      <main>
       <Routes>
-        <Route path="x7-macro" element={<X7Macro />} />
-        <Route path="bloody-macro" element={<BloodyMacro />} />
-        <Route path="logitech-macro" element={<Logitech />} />
-        <Route path="my-contacts" element={<MyContacts />} />
-        <Route path="auth" element={<LoginPage />} />
-        <Route path="registration" element={<Registration />}></Route>
-        <Route path="your-order"  element = {<AllMacro />}></Route>
-        <Route path="myaccount" element = {<AccountPage />}></Route>
-        <Route path="*" element= {<NotFound />}></Route>
-      </Routes>
+   <Route path="/" element={<Navigate to="/home" />} />
+   <Route path="/home" element={<HomePage />} />
+   <Route path="x7-macro" element={<X7Macro />} />
+   <Route path="bloody-macro" element={<BloodyMacro />} />
+   <Route path="logitech-macro" element={<Logitech />} />
+   <Route path="my-contacts" element={<MyContacts />} />
+   <Route path="auth" element={<LoginPage />} />
+   <Route path="registration" element={<Registration />} />
+   <Route path="your-order" element={<AllMacro />} />
+   <Route path="myaccount" element={<AccountPage />} />
+   <Route path="waiting" element = {<WaitingOrder />} />
+   <Route path="*" element={<NotFound />} />
+</Routes>
+      </main>
+
     </>
 
   );

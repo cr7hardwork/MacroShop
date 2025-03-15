@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "../App.css";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "../translations/TranslationContext";
+import { useTranslation } from "../../translations/TranslationContext";
 import axios from "axios"; 
 
 export default function Registration(){
@@ -24,10 +23,7 @@ export default function Registration(){
 
     const handleSumbit = async (e) => {
         e.preventDefault()
-        console.log("My Data", formData);
-
         const response = await axios.post("http://localhost:3000/auth/signup", formData);   
-           console.log(response.data);
            navigate('/auth')
            
     }

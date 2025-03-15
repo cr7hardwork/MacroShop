@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './AccountPage.css'
 import axios from "axios";
-import { useTranslation } from "../translations/TranslationContext";
+import { useTranslation } from "../../translations/TranslationContext";
 
 export default function AccountPage() {
   const [user, setUser] = useState(null);

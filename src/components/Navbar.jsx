@@ -7,6 +7,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
+      <NavLink className="nav-link" to= "home" >{translate.NAVBAR.Home}</NavLink>
       <NavLink className="nav-link" to="x7-macro">{translate.NAVBAR.X7Macro}</NavLink>
       <NavLink className="nav-link" to="bloody-macro">{translate.NAVBAR.BloodyMacro}</NavLink>
       <NavLink className="nav-link" to="logitech-macro">{translate.NAVBAR.LogitechMacro}</NavLink>

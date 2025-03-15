@@ -45,11 +45,22 @@ const translations = {
     LogitechMacro : "Макрос для Logitech",
     Contacts : "Контакты",
     Account : "Аккаунт",
-    MacroForAnyWeapon : "Заказать макрос на любую пушку"
+    MacroForAnyWeapon : "Заказать макрос на любую пушку",
+    Home : "Главная"
 
  },
  BUTTON : {
   Order : "Заказать"
+ },
+ CONTACT :{
+  MyVk : "Мой Вк"
+ },
+ ORDER : {
+  YOURORDER : "Ваш заказ оформлен!",
+  YOURORDERISREADY : "Ваш файл готов!",
+  DOWNLOADFILE : " Скачать файл",
+  ITWILLBEREADY : "Файл будет доступен через:",
+  SECOND : "секунд"
  }
 
 

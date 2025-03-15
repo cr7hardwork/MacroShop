@@ -1,0 +1,13 @@
+
+.contact {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contact h1{
+    color: red;
+  }
+  
+  .contact a {
+    text-decoration: none;
+  }

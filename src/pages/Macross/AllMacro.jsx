@@ -1,4 +1,4 @@
-import { useTranslation } from "../translations/TranslationContext"
+import { useTranslation } from "../../translations/TranslationContext"
 import FormMacro from "./FormMacro"
 
 export default function AllMacro(){

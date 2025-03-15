@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import "../App.css";
+
 import axios from 'axios';
-import { useTranslation } from '../translations/TranslationContext';
+import { useTranslation } from '../../translations/TranslationContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function FormMacro({ text, video , price }) {
@@ -74,6 +74,7 @@ export default function FormMacro({ text, video , price }) {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             })
+            navigate('/waiting')
             setInputValue('')
             setWeapon('')
             setMouseInput('')

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "../App.css";
-import { useTranslation } from "../translations/TranslationContext";
+import { useTranslation } from "../../translations/TranslationContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
