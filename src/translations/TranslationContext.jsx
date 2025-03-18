@@ -46,7 +46,9 @@ const translations = {
     Contacts : "Контакты",
     Account : "Аккаунт",
     MacroForAnyWeapon : "Заказать макрос на любую пушку",
-    Home : "Главная"
+    Home : "Главная",
+    MyAccount : "Мой аккаунт",
+    Logout : "Выход"
 
  },
  BUTTON : {
@@ -56,11 +58,13 @@ const translations = {
   MyVk : "Мой Вк"
  },
  ORDER : {
-  YOURORDER : "Ваш заказ оформлен!",
-  YOURORDERISREADY : "Ваш файл готов!",
-  DOWNLOADFILE : " Скачать файл",
-  ITWILLBEREADY : "Файл будет доступен через:",
-  SECOND : "секунд"
+  NUMBEROFORDER : "Номер заказа",
+  WHICHWHEAPON : "На какую пуху",
+  HOWMANYGHZ : " Сколько герц",
+  HOWISSENSITY : "Cколько чувст. мышки",
+  MACROVARIANT : "Вариант макроса",
+  MACROISNOTREADY : "Подождите макрос еще не готов",
+  DOWNLOADMACRO : "Скачать"
  }
 
 

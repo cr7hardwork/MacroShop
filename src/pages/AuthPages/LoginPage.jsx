@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useTranslation } from "../../translations/TranslationContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "./AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+
+  const { setIsAuthenticated } = useAuth();
 
   const translate = useTranslation()
 
@@ -30,7 +33,8 @@ export default function LoginPage() {
       const accessToken = response.data.accessToken;
       if (accessToken) {
         localStorage.setItem('accessToken', accessToken);
-        navigate('/myaccount');
+        setIsAuthenticated(true)
+        navigate('/my-account');
         setEmail('');
         setPassword('');
       }

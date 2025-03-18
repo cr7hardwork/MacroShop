@@ -74,7 +74,7 @@ export default function FormMacro({ text, video , price }) {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             })
-            navigate('/waiting')
+            navigate('/my-orders')
             setInputValue('')
             setWeapon('')
             setMouseInput('')
@@ -117,6 +117,11 @@ export default function FormMacro({ text, video , price }) {
             <h2> {translate.GHZ_INFORMATION.Price} :  {price}</h2>
             {!user && <p className='warning'>Чтоб купить надо зайти на аккаунт</p>}
             <button className="btn" type="submit" disabled={isDisabled} >  {translate.GHZ_INFORMATION.Order}</button>
+
+            <h4>
+            *После заказа автоматически вы будете на странице заказов, когда заказ будет готов будет ссылка на макрос
+            </h4>
+            
         </form>
     );
 }

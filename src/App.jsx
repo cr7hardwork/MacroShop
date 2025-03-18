@@ -10,7 +10,7 @@ import LoginPage from "./pages/AuthPages/LoginPage";
 import AccountPage from "./pages/Account/AccountPage";
 import HomePage from "./pages/HomePage";
 import MyContacts from "./pages/Contact/MyContacts";
-import WaitingOrder from "./pages/WaitingOrder/WaitingOrder";
+import Order from "./pages/Macross/Order";
 
 export default function App() {
   return (
@@ -18,20 +18,20 @@ export default function App() {
 
       <Navbar />
       <main>
-      <Routes>
-   <Route path="/" element={<Navigate to="/home" />} />
-   <Route path="/home" element={<HomePage />} />
-   <Route path="x7-macro" element={<X7Macro />} />
-   <Route path="bloody-macro" element={<BloodyMacro />} />
-   <Route path="logitech-macro" element={<Logitech />} />
-   <Route path="my-contacts" element={<MyContacts />} />
-   <Route path="auth" element={<LoginPage />} />
-   <Route path="registration" element={<Registration />} />
-   <Route path="your-order" element={<AllMacro />} />
-   <Route path="myaccount" element={<AccountPage />} />
-   <Route path="waiting" element = {<WaitingOrder />} />
-   <Route path="*" element={<NotFound />} />
-</Routes>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="x7-macro" element={<X7Macro />} />
+          <Route path="bloody-macro" element={<BloodyMacro />} />
+          <Route path="logitech-macro" element={<Logitech />} />
+          <Route path="my-contacts" element={<MyContacts />} />
+          <Route path="auth" element={<LoginPage />} />
+          <Route path="registration" element={<Registration />} />
+          <Route path="your-order" element={<AllMacro />} />
+          <Route path="my-account" element={<AccountPage />} />
+          <Route path="my-orders" element = {<Order />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
     </>

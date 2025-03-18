@@ -7,9 +7,9 @@ body {
   align-items: center;
   margin: 0;
   background-image: url('assets/OMM0SDL.jpeg');
-  background-size: cover;
-  
+  background-size: cover;   
 }
+
 .form {
     width: 500px;
     margin: 0 auto;
