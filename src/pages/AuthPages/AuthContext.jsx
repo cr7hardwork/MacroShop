@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext({
@@ -14,9 +15,33 @@ export default function AuthProvider({ children }) {
     setIsAuthenticated(false);
   };
 
-  useEffect(() => {
+
+  const checkTokenValidity = async () => {
     const token = localStorage.getItem("accessToken");
-    setIsAuthenticated(!!token);
+    if (!token) {
+      setIsAuthenticated(false);
+      return;
+    }
+
+    try {
+      const response =  axios
+      .get("http://localhost:3000/user/current", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+
+      if (!response.ok) {
+        logout();
+      }
+    } catch (error) {
+      console.error( error);
+      logout();
+    }
+  };
+
+  useEffect(() => {
+    checkTokenValidity(); 
   }, []);
 
   return (

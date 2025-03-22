@@ -11,6 +11,7 @@ import AccountPage from "./pages/Account/AccountPage";
 import HomePage from "./pages/HomePage";
 import MyContacts from "./pages/Contact/MyContacts";
 import Order from "./pages/Macross/Order";
+import PaymentPage from "./Payment/PaymentPage";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="your-order" element={<AllMacro />} />
           <Route path="my-account" element={<AccountPage />} />
           <Route path="my-orders" element = {<Order />} />
+          <Route path="payment" element = {<PaymentPage/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

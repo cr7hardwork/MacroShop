@@ -65,6 +65,9 @@ const translations = {
   MACROVARIANT : "Вариант макроса",
   MACROISNOTREADY : "Подождите макрос еще не готов",
   DOWNLOADMACRO : "Скачать"
+ },
+ PAYMENT : {
+  PAYWITHCARD : "Оплата картой"
  }
 
 
