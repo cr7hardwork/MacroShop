@@ -31,7 +31,9 @@ export default function App() {
           <Route path="your-order" element={<AllMacro />} />
           <Route path="my-account" element={<AccountPage />} />
           <Route path="my-orders" element = {<Order />} />
+          <Route path="payment/:orderId" element={<PaymentPage />} />
           <Route path="payment" element = {<PaymentPage/>} />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

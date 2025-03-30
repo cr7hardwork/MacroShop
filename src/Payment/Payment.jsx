@@ -14,11 +14,12 @@ export default function PaymentForm({ clientSecret }) {
     if (!stripe || !elements || !clientSecret) return; 
 
     setLoading(true);
-
+          
+    elements.submit();
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://example.com/order/complete"
+        return_url: "http://localhost:5173/my-orders"
       },
       clientSecret
     });

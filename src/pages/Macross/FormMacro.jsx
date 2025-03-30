@@ -80,7 +80,7 @@ export default function FormMacro({ text, video, price }) {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             });
-            navigate('/payment');
+            navigate('/payment/:orderId');
             setInputValue('');
             setWeapon('');
             setMouseInput('');
