@@ -3,18 +3,22 @@ import { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext({
   isAuthenticated: false,
+  role: '',
   logout: () => {},
-  setIsAuthenticated: () => {}
+  setIsAuthenticated: () => {},
+  setRole: () => {},
 });
 
 export default function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
+  const [role, setRole] = useState(null);
 
   const logout = () => {
-    localStorage.removeItem("accessToken");    
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("role");
     setIsAuthenticated(false);
+    setRole(null);
   };
-
 
   const checkTokenValidity = async () => {
     const token = localStorage.getItem("accessToken");
@@ -24,28 +28,27 @@ export default function AuthProvider({ children }) {
     }
 
     try {
-      const response =  axios
-      .get("http://localhost:3000/user/current", {
+      const response = await axios.get("http://localhost:3000/user/current", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      if (!response.ok) {
-        logout();
+      if (response.status === 200) {
+        setIsAuthenticated(true);
+        setRole(response.data.role); 
       }
-    } catch (error) {
-      console.error( error);
+    } catch (err) {
       logout();
     }
   };
 
   useEffect(() => {
-    checkTokenValidity(); 
+    checkTokenValidity();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, logout, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated, role, logout, setIsAuthenticated, setRole }}>
       {children}
     </AuthContext.Provider>
   );

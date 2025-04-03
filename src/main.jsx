@@ -7,12 +7,15 @@ import AuthProvider from "./pages/AuthPages/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
+   
       <TranslationProvider>
         <BrowserRouter>
+        <AuthProvider>
           <App />
+        </AuthProvider>
+          
         </BrowserRouter>
       </TranslationProvider>
-    </AuthProvider>
+  
   </StrictMode>
 );

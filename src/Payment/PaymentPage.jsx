@@ -19,6 +19,8 @@ const PaymentPage = () => {
     const fetchClientSecret = async () => {
       try {
         const response = await axios.post("http://localhost:3000/payments/create-payment", { amount: 1000 , order_id : orderId});
+        console.log(response);
+        
         setClientSecret(response.data.clientSecret);
         setLoading(false);
       } catch (error) {

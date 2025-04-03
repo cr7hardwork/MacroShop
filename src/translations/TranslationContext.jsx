@@ -6,7 +6,8 @@ const translations = {
   ACCOUNT: {
 
     LOGIN: "Логин",
-    PASSWORD: "Пароль"
+    PASSWORD: "Пароль",
+    ERRORMESSAGE : "Неправильный логин или пароль"
   },
   AUTH: {
     LOGIN: "Логин",

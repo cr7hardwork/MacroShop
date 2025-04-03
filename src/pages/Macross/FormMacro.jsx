@@ -12,6 +12,7 @@ export default function FormMacro({ text, video, price }) {
     const [inputValueError, setInputValueError] = useState('');
     const [mouseInputError, setMouseInputError] = useState('');
 
+
     const translate = useTranslation();
     const navigate = useNavigate();
 
@@ -36,6 +37,8 @@ export default function FormMacro({ text, video, price }) {
         setInputValue(value);
         if (value <= 0) {
             setInputValueError('Число должно быть положительное');
+        } else if (value > 500) {
+            setInputValueError('Число должно быть меньше или равно 500');
         } else {
             setInputValueError('');
         }
@@ -46,6 +49,8 @@ export default function FormMacro({ text, video, price }) {
         setMouseInput(value);
         if (value <= 0) {
             setMouseInputError('Число должно быть положительное');
+        } else if (value > 5) {
+            setMouseInputError('Число должно быть меньше или равно 5');
         } else {
             setMouseInputError('');
         }
@@ -75,12 +80,12 @@ export default function FormMacro({ text, video, price }) {
         };
 
         try {
-            await axios.post('http://localhost:3000/order', orderData, {
+            const order = await axios.post('http://localhost:3000/order', orderData, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             });
-            navigate('/payment/:orderId');
+            navigate(`/payment/${order.data.id}`);
             setInputValue('');
             setWeapon('');
             setMouseInput('');
@@ -99,7 +104,8 @@ export default function FormMacro({ text, video, price }) {
 
             <label className="label">{translate.GHZ_INFORMATION.HowManyGhz}</label>
             <input type="number" className="input-field" value={inputValue} onChange={handleInputChange} />
-            {inputValueError && <p style={{color : "red"}}>{inputValueError}</p>}
+            {inputValueError && <p style={{ color: "red" }}>{inputValueError}</p>
+            }
 
             <label className='label'>{translate.GHZ_INFORMATION.SensityOfMouse}</label>
             <input type="number" className='input-field' value={mouseInput} onChange={handleInputMouse} />
@@ -117,7 +123,7 @@ export default function FormMacro({ text, video, price }) {
 
             {!user && <p className='warning'>Чтоб купить, надо зайти на аккаунт</p>}
 
-            <button className="btn" type="submit">  
+            <button className="btn" type="submit">
                 {translate.GHZ_INFORMATION.Order}
             </button>
 

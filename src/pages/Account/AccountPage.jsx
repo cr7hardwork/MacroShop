@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import './AccountPage.css'
 import axios from "axios";
 import { useTranslation } from "../../translations/TranslationContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AccountPage() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const translate = useTranslation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -17,6 +19,11 @@ export default function AccountPage() {
       })
       .then((response) => {
         setUser(response.data);
+        if (response.data.role === 'ADMIN'){
+            navigate('/admin')
+        }else{
+          navigate('')
+        }
       })
       .catch((err) => {
         setError(err);
@@ -24,9 +31,8 @@ export default function AccountPage() {
   }, []);
 
   if (error) {
-    return {error}
+    return <div>{error.message}</div>;
   }
-
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -36,6 +42,7 @@ export default function AccountPage() {
         <div className="account-content">
           <h2 className="account-name">  {translate.REGISTRATION.USERNAME} : {user.userName}</h2>
           <p className="account-email"> {translate.REGISTRATION.EMAIL} : {user.email}</p>
+          <p>{user.role}</p>
         </div>
     </div>
   );
