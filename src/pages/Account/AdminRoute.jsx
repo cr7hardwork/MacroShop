@@ -9,7 +9,7 @@ export default function AdminRoute({ element }) {
     return <Navigate to="/auth" />;
   }
 
-  if (role !== "ADMIN") {
+  if (role !== "admin") {
     return <Navigate to="/home" />;
   }
 

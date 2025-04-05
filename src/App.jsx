@@ -13,6 +13,7 @@ import MyContacts from "./pages/Contact/MyContacts";
 import Order from "./pages/Macross/Order";
 import PaymentPage from "./Payment/PaymentPage";
 import AdminPage from "./pages/Account/AdminPage";
+import AdminRoute from "./pages/Account/AdminRoute";
 
 export default function App() {
   return (
@@ -34,8 +35,7 @@ export default function App() {
           <Route path="my-orders" element = {<Order />} />
           <Route path="payment/:orderId" element={<PaymentPage />} />
           <Route path="payment" element = {<PaymentPage/>} />
-          <Route path="admin" element={<AdminPage/>} />
-
+          <Route path="admin" element = {<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

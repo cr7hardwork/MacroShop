@@ -11,13 +11,12 @@ const AuthContext = createContext({
 
 export default function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("accessToken"));
-  const [role, setRole] = useState(null);
+  const [role, setRole] = useState('');
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("role");
     setIsAuthenticated(false);
-    setRole(null);
+    setRole('');
   };
 
   const checkTokenValidity = async () => {

@@ -11,25 +11,22 @@ export default function AccountPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/user/current", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((response) => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/user/current", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
         setUser(response.data);
-        if (response.data.role === 'ADMIN'){
-            navigate('/admin')
-        }else{
-          navigate('')
-        }
-      })
-      .catch((err) => {
+        console.log(response);
+      } catch (err) {
         setError(err);
-      });
-  }, []);
+      }
+    };
 
+    fetchUserData();
+  }, []);
   if (error) {
     return <div>{error.message}</div>;
   }
@@ -39,11 +36,25 @@ export default function AccountPage() {
 
   return (
     <div className="account-container">
-        <div className="account-content">
-          <h2 className="account-name">  {translate.REGISTRATION.USERNAME} : {user.userName}</h2>
-          <p className="account-email"> {translate.REGISTRATION.EMAIL} : {user.email}</p>
-          <p>{user.role}</p>
-        </div>
+      <div className="account-content">
+        <h2 className="account-name">{translate.REGISTRATION.USERNAME}: {user.userName}</h2>
+        <p className="account-email">{translate.REGISTRATION.EMAIL}: {user.email}</p>
+        <p>{translate.REGISTRATION.ROLE} {user.role}</p>
+        {user.role === "admin" && (
+          <button onClick={
+            
+            () =>
+            {
+              console.log('navigating');
+              
+              navigate("/admin")
+            }
+              
+            }>
+            Перейти на админку
+          </button>
+        )}
+      </div>
     </div>
   );
 }
