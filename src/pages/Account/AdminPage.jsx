@@ -1,52 +1,87 @@
-import React, { useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthPages/AuthContext";
+import { useState } from "react";
+import { useTranslation } from "../../translations/TranslationContext";
 
-export default function AdminPage() {
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState(null);
-  const { role } = useAuth();
-  const navigate = useNavigate();
+export async function adminLoader() {
+  const token = localStorage.getItem("accessToken");
+  if (!token) return redirect("/auth");
 
-  useEffect(() => {
-    if (role !== "admin") {
-      navigate("/home");
-      return;
+  try {
+    const response = await axios.get("http://localhost:3000/user/current", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.data.role !== "admin") {
+      return redirect("/home");
     }
 
-    const fetchOrders = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/order/all", {
-          method :'GET',
+    const orders = await axios.get("http://localhost:3000/order/all", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return orders.data;
+
+  } catch (err) {
+    return redirect("/auth");
+  }
+}
+
+export default function AdminPage() {
+  const orders = useLoaderData();
+  const [urls, setUrls] = useState({});
+  const [error, setError] = useState(null);
+ 
+  const translate = useTranslation();
+
+  const updateUrl = async (orderId) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/order/${orderId}/update-url`,
+        { url: urls[orderId] },
+        {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-        });
-        setOrders(response.data);
-      } catch (err) {
-        setError(err);
-        navigate("/");
-      }
-    };
+        }
+      );
 
-    fetchOrders();
-  }, [role, navigate]);
+      setUrls((prev) => ({ ...prev, [orderId]: "" }));
+    } catch (err) {
+      setError(err);
+    }
+  };
 
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+  const handleInputChange = (e, orderId) => {
+    setUrls((prev) => ({ ...prev, [orderId]: e.target.value }));
+  };
+
+  if (error) return <div>{error.message}</div>;
 
   return (
-    <div>
-      <h2>All Orders</h2>
-      <ul>
-        {orders.map((order) => (
-          <li key={order.id}>
-            Order ID: {order.id} - Status: {order.status}
-          </li>
-        ))}
-      </ul>
+    <div className="form">
+      <h2>{translate.ADMIN.ALLORDERS}</h2>
+      {orders.map((order) => (
+        <div key={order.id}>
+          <p>
+            {translate.ADMIN.ORDERID} {order.id} - {translate.ADMIN.STATUS}: {order.status}
+          </p>
+          <input
+            type="text"
+            className="input-field"
+            value={urls[order.id] || ""}
+            onChange={(e) => handleInputChange(e, order.id)}
+          />
+          <button className="btn" onClick={() => updateUrl(order.id)}>
+            {translate.ADMIN.UPDATEURL}
+          </button>
+        </div>
+      ))}
     </div>
   );
 }
