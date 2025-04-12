@@ -36,7 +36,7 @@ export default function AdminPage() {
   const orders = useLoaderData();
   const [urls, setUrls] = useState({});
   const [error, setError] = useState(null);
- 
+  const [updatedOrders, setUpdatedOrders] = useState({});
   const translate = useTranslation();
 
   const updateUrl = async (orderId) => {
@@ -52,6 +52,7 @@ export default function AdminPage() {
       );
 
       setUrls((prev) => ({ ...prev, [orderId]: "" }));
+      setUpdatedOrders((prev) => ({ ...prev, [orderId]: true }));
     } catch (err) {
       setError(err);
     }
@@ -71,6 +72,9 @@ export default function AdminPage() {
           <p>
             {translate.ADMIN.ORDERID} {order.id} - {translate.ADMIN.STATUS}: {order.status}
           </p>
+          {updatedOrders[order.id] && (
+            <p className="updated">{translate.ADMIN.URLUPDATED}</p>
+          )}
           <input
             type="text"
             className="input-field"

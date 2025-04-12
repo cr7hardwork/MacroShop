@@ -39,9 +39,8 @@ export default function AccountPage() {
       <div className="account-content">
         <h2 className="account-name">{translate.REGISTRATION.USERNAME}: {user.userName}</h2>
         <p className="account-email">{translate.REGISTRATION.EMAIL}: {user.email}</p>
-        <p>{translate.REGISTRATION.ROLE} {user.role}</p>
         {user.role === "admin" && (
-          <button onClick={
+          <button className="btn"  onClick={
             
             () =>
             {
@@ -51,7 +50,7 @@ export default function AccountPage() {
             }
               
             }>
-            Перейти на админку
+            Перейти на страницу админа
           </button>
         )}
       </div>

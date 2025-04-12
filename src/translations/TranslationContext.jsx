@@ -75,7 +75,8 @@ const translations = {
   ALLORDERS : "Все заказы",
   ORDERID: "Номер заказа",
   STATUS : "Статус",
-  UPDATEURL : "Обновить URL"
+  UPDATEURL : "Обновить URL",
+  URLUPDATED  : "Обновлен"
  }
 
 

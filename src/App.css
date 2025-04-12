@@ -7,13 +7,13 @@ body {
   align-items: center;
   margin: 0;
   background-image: url('assets/OMM0SDL.jpeg');
-  background-size: cover;   
+  background-size:cover;   
 }
 
 .form {
     width: 500px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 25px;
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -155,4 +155,9 @@ body {
   color: red;
   margin-top: 8px;
   font-size: 14px;
+}
+
+.updated {
+  color: red;
+  font-size: 20px;
 }
