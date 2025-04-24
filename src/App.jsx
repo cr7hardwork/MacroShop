@@ -13,6 +13,7 @@ import Order from "./pages/Macross/Order";
 import PaymentPage from "./Payment/PaymentPage";
 import AdminPage, { adminLoader } from "./pages/Account/AdminPage";
 import NavbarLayout from "./components/NavbarLayout";
+import Reviews from "./Review/Review";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "registration", element: <Registration /> },
       { path: "x7-macro", element: <X7Macro /> },
       { path: "bloody-macro", element: <BloodyMacro /> },
+      {path : "review",element : <Reviews />},
       { path: "logitech-macro", element: <Logitech /> },
       { path: "your-order", element: <AllMacro /> },
       { path: "my-contacts", element: <MyContacts /> },

@@ -15,10 +15,11 @@ export default function Navbar() {
       <NavLink className="nav-link" to="logitech-macro">{translate.NAVBAR.LogitechMacro}</NavLink>
       <NavLink className="nav-link" to="your-order">{translate.NAVBAR.MacroForAnyWeapon}</NavLink>
       <NavLink className="nav-link" to="my-contacts">{translate.NAVBAR.Contacts}</NavLink>
+      <NavLink className="nav-link" to="review">{translate.NAVBAR.Reviews}</NavLink>
 
       {isAuthenticated ? (
         <>
-          <NavLink className="nav-link" to="my-orders" >Orders</NavLink>
+          <NavLink className="nav-link" to="my-orders" >{translate.NAVBAR.ORDERS}</NavLink>
           <NavLink className="nav-link" to="my-account">{translate.NAVBAR.MyAccount}</NavLink>
           <NavLink className="nav-link" onClick={logout}>{translate.NAVBAR.Logout}</NavLink>
         </>

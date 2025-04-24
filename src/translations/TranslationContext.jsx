@@ -49,7 +49,9 @@ const translations = {
     MacroForAnyWeapon : "Заказать макрос на любую пушку",
     Home : "Главная",
     MyAccount : "Мой аккаунт",
-    Logout : "Выход"
+    Logout : "Выход",
+    Reviews : "Отзывы",
+    ORDERS : "Заказы"
 
  },
  BUTTON : {
@@ -76,7 +78,21 @@ const translations = {
   ORDERID: "Номер заказа",
   STATUS : "Статус",
   UPDATEURL : "Обновить URL",
-  URLUPDATED  : "Обновлен"
+  URLUPDATED  : "Обновлен",
+  SENSITY: "Какая сенса",
+  GHZINFO : 'Сколько герц',
+  MACROVARIANTSPEED : "Вариант макроса",
+  OWNERID : "Id владельца",
+  WHICHWEAPON : "На какую пуху"
+ },
+ REVIEW : {
+  REVIEWS : "Отзывы",
+  PUTREVIEW : "Оставить отзыв",
+    PLEASESIGNIN       : "Пожалуйста, войдите, чтобы оставить отзыв.",
+   ALLREVIEWS  :'Все отзывы',
+   DONTHAVEREVIEWS  : 'Пока нет отзывов',
+   WRITE : "Написать"
+
  }
 
 

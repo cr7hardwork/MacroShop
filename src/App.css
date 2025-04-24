@@ -10,130 +10,150 @@ body {
   background-size:cover;   
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .form {
-    width: 500px;
-    margin: 0 auto;
-    padding: 25px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgb(109, 101, 139);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  animation: fadeInUp 0.8s ease-out;
+  box-sizing: border-box; 
 }
 
-.form h1 {
-  text-align: center;
-  font-size: 24px;
-  color: #28a745 ;
-  margin-bottom: 20px;
-}
 
+
+.form h1,
 .form h2 {
-  text-align: left;
-  font-size: 24px;
-  color: #28a745 ;
+  text-align: center;
+  font-size: 28px;
+  color: #00ffae;
   margin-bottom: 20px;
 }
 
 .form label {
-  text-align: left;
-  font-size: 15px;
-  color: black;
-  transition: background-color 0.3s ease, color 0.3s ease;
   display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #f0f0f0;
+}
+.input-field,
+textarea {
+  width: 100%; 
+  max-width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  color: black;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  outline: none;
+  box-sizing: border-box; 
 }
 
-.input-field {
-  width: 100%;
-  padding: 9px 9px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  background-color: #fafafa;
-  color: #333;
-  transition: all 0.3s ease;
+.input-field:focus,
+textarea:focus {
+  box-shadow: 0 0 8px #00ffae;
 }
- 
-.btn {
-  background-color: #57c3a7;
-  border-radius: 15px;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+
+.select-dropdown {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
   font-size: 16px;
-  border-radius: 20px;
-  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  appearance: none;
+  outline: none;
+}
+
+.select-dropdown:focus {
+  box-shadow: 0 0 8px #00ffae;
+}
+
+.btn,
+.order-button,
+.back-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s ease;
+  color: white;
+}
+
+.btn {
+  background: linear-gradient(to right, #00b09b, #96c93d);
 }
 
 .btn:hover {
-  background-color: #4da08f;
+  background: linear-gradient(to right, #009c88, #89b932);
 }
 
 .btn:disabled {
-  background-color: #aaa;
+  background-color: #666;
   cursor: not-allowed;
-}
-  
-.select-dropdown {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
 .order-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+  background: linear-gradient(to right, #28a745, #5ee471);
 }
 
 .order-button:hover {
-    background-color: #218838;
+  background: linear-gradient(to right, #218838, #4ed160);
 }
 
 .back-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #0056b3;;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  background: linear-gradient(to right, #0056b3, #008cba);
 }
 
+.back-button:hover {
+  background: linear-gradient(to right, #004494, #0073a5);
+}
 
 .margin {
   margin-top: 10px;
 }
 
-
-.a-link {
-  color: #218838 ;
-  font-size: 1rem;
-  text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-
-.submit-container{
+.submit-container {
   display: flex;
   justify-content: left;
   margin-top: 10px;
 }
 
-.warning{
-  font-size: 20px;
-  color: red;
-  
+.a-link {
+  color: #00ffae;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.a-link:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .container-home {
@@ -146,18 +166,24 @@ body {
 }
 
 .container-home a {
-  color: red; 
+  color: #ff5757;
   text-decoration: none;
 }
 
-
-.error-message {
-  color: red;
-  margin-top: 8px;
-  font-size: 14px;
+.container-home a:hover {
+  text-decoration: underline;
 }
 
+.error-message,
+.warning,
 .updated {
-  color: red;
-  font-size: 20px;
+  font-size: 16px;
+  color: #ff4d4f;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
 }

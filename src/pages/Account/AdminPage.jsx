@@ -69,9 +69,13 @@ export default function AdminPage() {
       <h2>{translate.ADMIN.ALLORDERS}</h2>
       {orders.map((order) => (
         <div key={order.id}>
-          <p>
-            {translate.ADMIN.ORDERID} {order.id} - {translate.ADMIN.STATUS}: {order.status}
-          </p>
+         <p><strong>{translate.ADMIN.ORDERID}:</strong> {order.id}</p>
+        <p><strong>{translate.ADMIN.STATUS}:</strong> {order.status}</p>
+        <p><strong>{translate.ADMIN.SENSITY} : </strong> {order.sensity}</p>
+        <p><strong>{translate.ADMIN.GHZINFO} : </strong> {order.ghzinform}</p>
+        <p><strong>{translate.ADMIN.MACROVARIANTSPEED}:</strong> {order.macroVariantSpeed}</p>
+        <p><strong>{translate.ADMIN.OWNERID}:</strong> {order.owner_id}</p>
+        <p><strong>{translate.ADMIN.WHICHWEAPON}:</strong> {order.whichWeapon}</p>
           {updatedOrders[order.id] && (
             <p className="updated">{translate.ADMIN.URLUPDATED}</p>
           )}
