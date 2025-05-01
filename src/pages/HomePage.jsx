@@ -1,13 +1,21 @@
+import { Link } from 'react-router-dom';
+import './Macross/HomePage.css';
+
 export default function HomePage() {
     return (
-        <div className="container-home">
-            <p>
-                Я Антон, который уже 10 лет пишу/продаю макросы на мышки
-                (X7, Bloody, Logitech, Razer, Ardor),<br></br> которые могут стрелять и в точку и не в точку.
-                Пишу на любые пухи.
-                Лично чтоб со мной связаться вот мои вк : 
-                <a href="https://vk.com/id637670990" target="_blank"> ВКонтакте</a>
-            </p>
+        <div className="home">
+            <div className="message-box">
+                <h1>Добро пожаловать!</h1>
+                <p>
+                    Я <strong>Антон</strong>, уже более 10 лет создаю и продаю макросы для мышек:
+                    <br /> <span className="brands">X7, Bloody, Logitech, Razer, Ardor</span>.
+                    <br /> Пишу под любые пушки — в одну точку
+                </p>
+                <p>
+                    В связи с ограничениями на оплату с российских карт, воспользуйся быстрой покупкой:
+                </p>
+                <Link to="/buyimmediately" className="buy-button">Покупай сейчас</Link>
+            </div>
         </div>
     );
 }

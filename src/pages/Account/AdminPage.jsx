@@ -36,7 +36,10 @@ export default function AdminPage() {
   const orders = useLoaderData();
   const [urls, setUrls] = useState({});
   const [error, setError] = useState(null);
-  const [updatedOrders, setUpdatedOrders] = useState({});
+  const [updatedOrders, setUpdatedOrders] = useState(() => {
+    const saved = localStorage.getItem("updatedOrders");
+    return saved ? JSON.parse(saved) : {};
+  });
   const translate = useTranslation();
 
   const updateUrl = async (orderId) => {
@@ -50,9 +53,11 @@ export default function AdminPage() {
           },
         }
       );
-
+  
+      const newUpdated = { ...updatedOrders, [orderId]: true };
       setUrls((prev) => ({ ...prev, [orderId]: "" }));
-      setUpdatedOrders((prev) => ({ ...prev, [orderId]: true }));
+      setUpdatedOrders(newUpdated);
+      localStorage.setItem("updatedOrders", JSON.stringify(newUpdated));
     } catch (err) {
       setError(err);
     }

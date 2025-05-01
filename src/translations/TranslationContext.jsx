@@ -51,7 +51,8 @@ const translations = {
     MyAccount : "Мой аккаунт",
     Logout : "Выход",
     Reviews : "Отзывы",
-    ORDERS : "Заказы"
+    ORDERS : "Заказы",
+     BUYIMMEDIATELY : "Покупать сразу"
 
  },
  BUTTON : {
@@ -93,7 +94,12 @@ const translations = {
    DONTHAVEREVIEWS  : 'Пока нет отзывов',
    WRITE : "Написать"
 
- }
+ },
+
+CHATWITME : {
+  BUYIMMEDIATELY : "Дорогие друзья!В связи с временными ограничениями на оплату с российских карт, пожалуйста, напишите мне в Telegram, чтобы оформить заказ вручную. Я с радостью помогу вам!",
+  CHATME : " Написать в Telegram"
+}
 
 
 

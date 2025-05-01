@@ -14,6 +14,7 @@ import PaymentPage from "./Payment/PaymentPage";
 import AdminPage, { adminLoader } from "./pages/Account/AdminPage";
 import NavbarLayout from "./components/NavbarLayout";
 import Reviews from "./Review/Review";
+import BuyImmediately from "./pages/Contact/BuyImmediately";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "x7-macro", element: <X7Macro /> },
       { path: "bloody-macro", element: <BloodyMacro /> },
       {path : "review",element : <Reviews />},
+      {path : 'buyimmediately', element : <BuyImmediately />},
       { path: "logitech-macro", element: <Logitech /> },
       { path: "your-order", element: <AllMacro /> },
       { path: "my-contacts", element: <MyContacts /> },

@@ -16,6 +16,7 @@ export default function Navbar() {
       <NavLink className="nav-link" to="your-order">{translate.NAVBAR.MacroForAnyWeapon}</NavLink>
       <NavLink className="nav-link" to="my-contacts">{translate.NAVBAR.Contacts}</NavLink>
       <NavLink className="nav-link" to="review">{translate.NAVBAR.Reviews}</NavLink>
+      <NavLink className="nav-link" to="buyimmediately">{translate.NAVBAR.BUYIMMEDIATELY}</NavLink>
 
       {isAuthenticated ? (
         <>
