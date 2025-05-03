@@ -34,7 +34,7 @@ export default function FormMacro({ text, video, price }) {
 
     const handleInputChange = (e) => {
         const value = e.target.value;
-        setInputValue(value);
+        setInputValue(+value);
         if (value <= 0) {
             setInputValueError('Число должно быть положительное');
         } else if (value > 500) {
@@ -46,7 +46,7 @@ export default function FormMacro({ text, video, price }) {
 
     const handleInputMouse = (e) => {
         const value = e.target.value;
-        setMouseInput(value);
+        setMouseInput(+value);
         if (value <= 0) {
             setMouseInputError('Число должно быть положительное');
         } else if (value > 5) {
@@ -59,9 +59,7 @@ export default function FormMacro({ text, video, price }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!inputValue.trim() || !mouseInput.trim() || !selectedOption || !weapon) {
-            return;
-        }
+       
 
         if (inputValue <= 0 || mouseInput <= 0) {
             return;

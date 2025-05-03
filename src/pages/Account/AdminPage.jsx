@@ -9,55 +9,57 @@ export async function adminLoader() {
   if (!token) return redirect("/auth");
 
   try {
-    const response = await axios.get("http://localhost:3000/user/current", {
+    const userRes = await axios.get("http://localhost:3000/user/current", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    if (response.data.role !== "admin") {
+    if (userRes.data.role !== "admin") {
       return redirect("/home");
     }
 
-    const orders = await axios.get("http://localhost:3000/order/all", {
+    const ordersRes = await axios.get("http://localhost:3000/order/all", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    return orders.data;
-
+    return ordersRes.data;
   } catch (err) {
     return redirect("/auth");
   }
 }
 
 export default function AdminPage() {
-  const orders = useLoaderData();
+  const initialOrders = useLoaderData();
+  const [orders, setOrders] = useState(initialOrders);
   const [urls, setUrls] = useState({});
   const [error, setError] = useState(null);
-  const [updatedOrders, setUpdatedOrders] = useState(() => {
-    const saved = localStorage.getItem("updatedOrders");
-    return saved ? JSON.parse(saved) : {};
-  });
   const translate = useTranslation();
 
   const updateUrl = async (orderId) => {
     try {
+      const url = urls[orderId];
+      const token = localStorage.getItem("accessToken");
+
       const response = await axios.put(
         `http://localhost:3000/order/${orderId}/update-url`,
-        { url: urls[orderId] },
+        { url },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-  
-      const newUpdated = { ...updatedOrders, [orderId]: true };
+
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === orderId ? response.data : order
+        )
+      );
+
       setUrls((prev) => ({ ...prev, [orderId]: "" }));
-      setUpdatedOrders(newUpdated);
-      localStorage.setItem("updatedOrders", JSON.stringify(newUpdated));
     } catch (err) {
       setError(err);
     }
@@ -73,20 +75,22 @@ export default function AdminPage() {
     <div className="form">
       <h2>{translate.ADMIN.ALLORDERS}</h2>
       {orders.map((order) => (
-        <div key={order.id}>
-         <p><strong>{translate.ADMIN.ORDERID}:</strong> {order.id}</p>
-        <p><strong>{translate.ADMIN.STATUS}:</strong> {order.status}</p>
-        <p><strong>{translate.ADMIN.SENSITY} : </strong> {order.sensity}</p>
-        <p><strong>{translate.ADMIN.GHZINFO} : </strong> {order.ghzinform}</p>
-        <p><strong>{translate.ADMIN.MACROVARIANTSPEED}:</strong> {order.macroVariantSpeed}</p>
-        <p><strong>{translate.ADMIN.OWNERID}:</strong> {order.owner_id}</p>
-        <p><strong>{translate.ADMIN.WHICHWEAPON}:</strong> {order.whichWeapon}</p>
-          {updatedOrders[order.id] && (
+        <div key={order.id} className="order-card">
+          <p><strong>{translate.ADMIN.ORDERID}:</strong> {order.id}</p>
+          <p><strong>{translate.ADMIN.STATUS}:</strong> {order.status}</p>
+          <p><strong>{translate.ADMIN.SENSITY}:</strong> {order.sensity}</p>
+          <p><strong>{translate.ADMIN.GHZINFO}:</strong> {order.ghzinform}</p>
+          <p><strong>{translate.ADMIN.MACROVARIANTSPEED}:</strong> {order.macroVariantSpeed}</p>
+          <p><strong>{translate.ADMIN.OWNERID}:</strong> {order.owner_id}</p>
+          <p><strong>{translate.ADMIN.WHICHWEAPON}:</strong> {order.whichWeapon}</p>
+          {order.updated === "updated" && (
             <p className="updated">{translate.ADMIN.URLUPDATED}</p>
           )}
+
           <input
             type="text"
             className="input-field"
+            placeholder={translate.ADMIN.ENTERURL}
             value={urls[order.id] || ""}
             onChange={(e) => handleInputChange(e, order.id)}
           />
